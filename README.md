@@ -1,5 +1,5 @@
-# サービス名「プロダクト開発の道の辺.🤗」
-- https://prduct-management-ai-app.streamlit.app/
+# サービス名「プロダクト開発の道の辺」
+- [https://prduct-management-ai-app.streamlit.app/](https://on-the-way-release.streamlit.app/)
 
 ## 開発経緯
 - 3連休が暇だったので
