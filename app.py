@@ -8,7 +8,7 @@ from langchain.schema import (
 from langchain.callbacks import get_openai_callback
 
 # API キーを変数として設定
-#api_key = "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"
+#api_key = "sk-xxx"
 
 
 def init_page():  # ページ設定
