@@ -20,7 +20,7 @@ def init_page():  # ページ設定
     st.markdown(
         """
         <style>
-            .css-1d391kg {width: 300px;}
+            .css-1d391kg {width: 240px;}
         </style>
         """,
         unsafe_allow_html=True
@@ -102,10 +102,16 @@ def main():
     # コストの表示
     st.sidebar.markdown("## ただいまの相談料")
 
-    costs = st.session_state.get('costs', [])
-    for const in costs:
-        st.sidebar.markdown(f"- ¥{cost* 150:.5f}")
-    
+    costs = st.session_state.get('costs', [0])
+    for cost in costs:
+        st.sidebar.markdown(f"- ¥{cost * 150:.2f}")
+
+    # 'Buy me a beer'
+    st.sidebar.markdown(
+        '<div style="margin-top: 1em;"><a href="https://www.buymeacoffee.com/mitanaka2012" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Beer" height="41" width="174"></a></div>',
+        unsafe_allow_html=True,
+    )
+
 
 if __name__ == "__main__":
     main()
