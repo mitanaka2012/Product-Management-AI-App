@@ -47,17 +47,22 @@ def main():
     init_page()
     init_messages()
 
-    # ChatOpenAI インスタンスを作成し、API キーを渡す
+    # ChatOpenAI インスタンスを作成
     llm = ChatOpenAI(
-#        openai_api_key=api_key,
         temperature=0.7
     )
 
-    # ユーザーの入力を監視
-    if user_input := st.chat_input("気になっていることを入力してください。Enterで送信、shift+Enterで改行。"):
+    # ユーザーの入力を監視する部分を修正
+    container = st.container()
+    with container:
+        with st.form(key='my_form', clear_on_submit=True):
+            user_input = st.text_area(label='Message: ', key='input', height=100)
+            submit_button = st.form_submit_button(label='Send')
+
+    if submit_button and user_input:
         st.session_state.messages.append(HumanMessage(content=user_input))
         with st.spinner("スライムナイトが考え中 ..."):
-            answer , cost = get_answer(llm, st.session_state.messages)
+            answer, cost = get_answer(llm, st.session_state.messages)
         st.session_state.messages.append(AIMessage(content=answer))
         st.session_state.costs.append(cost)
 
