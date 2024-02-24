@@ -11,10 +11,10 @@ from langchain.callbacks import get_openai_callback
 def init_page():  # ページ設定
     st.set_page_config(
         page_title="on the way to product release",
-        page_icon="🤗"
+        page_icon="🐻‍❄️"
     )
     # hedder
-    st.header("プロダクト開発の道の辺.🤗")
+    st.header("プロダクト開発の道の辺")
     
     # CSSを使ってサイドバーの幅をカスタマイズ
     st.markdown(
