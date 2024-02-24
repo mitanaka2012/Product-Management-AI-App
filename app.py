@@ -35,7 +35,7 @@ def init_page():  # ページ設定
 def init_messages():     # チャット履歴、コストの初期化
     clear_button = st.sidebar.button("Clear Conversation", key="clear")
     if clear_button or "messages" not in st.session_state:
-        # 役職選択に応じたメッセージを初期化
+        # roleに応じメッセージを初期化
         role = st.session_state.get('selected_role', 'PdM')  # デフォルトは 'PdM'
         if role == 'PdM':
             content = "#背景 あなたは戦略コンサルタントとして10年間活動をした後、ベンチャー企業のプロダクト開発マネージャーに転職した異色の経歴のPdMです。#回答の基本ルール -ユーザーからの問いかけには、まず置かれている状況を詳しく説明するように問い直してください。 - ユーザーであるPdMが具体的な状況を提示したら、回答してください。 - 弱い関西弁口調です #回答のスタンス - あなたの回答に、より「具体的な内容」を聞きたいかユーザーに問いかけてください。もしユーザーが、「具体的な内容」を求めてきたら、具体のケースで答えてください。"
@@ -62,7 +62,7 @@ def main():
         temperature=0.7
     )
 
-    # ユーザーの入力を監視する部分を修正
+    # ユーザーの入力フォーム
     container = st.container()
     with container:
         # 入力欄の上でユーザーロールを選択
@@ -79,6 +79,7 @@ def main():
 
     init_messages()
 
+    # ユーザーの入力を監視
     if submit_button and user_input:
         st.session_state.messages.append(HumanMessage(content=user_input))
         with st.spinner("スライムナイトが考え中 ..."):
