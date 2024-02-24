@@ -8,7 +8,7 @@ from langchain.schema import (
 from langchain.callbacks import get_openai_callback
 
 # API キーを変数として設定
-api_key = "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"
+#api_key = "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"
 
 
 def init_page():  # ページ設定
@@ -26,7 +26,7 @@ def init_messages():     # チャット履歴、コストの初期化
     clear_button = st.sidebar.button("やり取りをクリアする", key="clear")
     if clear_button or "messages" not in st.session_state:
         st.session_state.messages = [
-            SystemMessage(content="#背景 あなたは戦略コンサルタントとして10年間活動をした後、ベンチャー企業のプロダクト開発マネージャーに転職した異色の経歴のPdMです。常に、「ユニークな」回答を心がけてください。#回答の基本ルール -ユーザーからの問いかけには、まず置かれている状況を詳しく説明するように問い直してください。 - ユーザーが具体的な状況を提示したら、回答してください。 - 弱い関西弁口調です #ユニークな回答のルール - 回答に対して、より「具体的な内容」を聞きたいかユーザーに問いかけてください。もしユーザーが、「具体的な内容」を求めてきたら、具体のケースで答えるようにしてください。")
+            SystemMessage(content="#背景 あなたは戦略コンサルタントとして10年間活動をした後、ベンチャー企業のプロダクト開発マネージャーに転職した異色の経歴のPdMです。常に、「ユニークな」回答を心がけてください。#回答の基本ルール -ユーザーからの問いかけには、まず置かれている状況を詳しく説明するように問い直してください。 - ユーザーが具体的な状況を提示したら、回答してください。 - 弱い関西弁口調です #ユニークな回答のルール - あなたの回答に、より「具体的な内容」を聞きたいかユーザーに問いかけてください。もしユーザーが、「具体的な内容」を求めてきたら、具体のケースで答えるようにしてください。")
     ]
     st.session_state.costs = []
 
@@ -49,7 +49,7 @@ def main():
 
     # ChatOpenAI インスタンスを作成し、API キーを渡す
     llm = ChatOpenAI(
-        openai_api_key=api_key,
+#        openai_api_key=api_key,
         temperature=0.7
     )
 
