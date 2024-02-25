@@ -23,7 +23,7 @@
 
 ### AsIs
 repository name/
-│
+
 ├── .streamlit/
 │   └── (streamlitの設定ファイル)
 │── app.py (ユーザーに対してQ&Aサービスを提供するアプリケーションのメインスクリプト)
