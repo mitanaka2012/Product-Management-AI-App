@@ -22,12 +22,15 @@
 - 本当は、事前に用意したドキュメントを参照して回答するようにしたい
 
 ### AsIs
+
+### AsIs
+
 repository name/
 
 ├── .streamlit/
 
-    └── (streamlitの設定ファイル)
-    
+|   └── (streamlitの設定ファイル)
+
 ├── app.py (ユーザーに対してQ&Aサービスを提供するアプリケーションのメインスクリプト)
 
 ├── requirements.txt (プロジェクトの依存関係を記述するファイル)
