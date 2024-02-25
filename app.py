@@ -132,7 +132,7 @@ def main():
             st.write(f"プロダクト開発はときには休憩が必要です。気になることをスライムナイトに聞いてみましょう。") #System message: {message.content}
 
     # コストの表示
-    st.sidebar.markdown("## ただいまの相談料")
+    st.sidebar.markdown("## API利用料")
 
     costs = st.session_state.get('costs', [0])
     for cost in costs:
