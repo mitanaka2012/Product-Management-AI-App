@@ -23,8 +23,6 @@
 
 ### AsIs
 
-### AsIs
-
 repository name/
 
 ├── .streamlit/
