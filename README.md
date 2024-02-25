@@ -32,27 +32,3 @@ repository name/
 ├── app.py (ユーザーに対してQ&Aサービスを提供するアプリケーションのメインスクリプト)
 
 ├── requirements.txt (プロジェクトの依存関係を記述するファイル)
-
-## ToBe (暫定)
-
-repository name/
-
-├── .streamlit/
-
-|   └── (streamlitの設定ファイル)
-
-├── documents/
-
-│   └── (ここには、インデックス化したい文書を置く)
-
-├── index_storage/
-
-│   └── (ここには、生成されたインデックスのストレージが保存される)
-
-├── documents/
-
-│   ├── index_builder.py (文書のインデックス化とストレージ保存を行うスクリプト)
-
-│   └── app.py (ユーザーに対してQ&Aサービスを提供するアプリケーションのメインスクリプト)
-
-├── requirements.txt (プロジェクトの依存関係を記述するファイル)
