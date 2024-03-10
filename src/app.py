@@ -7,7 +7,7 @@ from langchain.schema import (
 )
 from langchain_openai import ChatOpenAI
 from langchain_community.callbacks import StreamlitCallbackHandler
-from index_builder import initialize_vectorstore  # あなたのベクターストア初期化関数
+from index_builder import initialize_vectorstore  # ベクターストア初期化関数
 from langchain.chains import RetrievalQA
 
 def init_page():  # ページ設定
@@ -110,11 +110,11 @@ def main():
     # ユーザーの入力を監視し、処理
     if submit_button and user_input:
         st.session_state.messages.append(HumanMessage(content=user_input))
-        with st.spinner("Thinking..."):
-            qa_chain = create_qa_chain()
-            response = qa_chain.invoke(user_input)
-            answer = response["result"]
-            st.session_state.messages.append(AIMessage(content=answer))
+        # with st.spinner("Thinking..."):
+        qa_chain = create_qa_chain()
+        response = qa_chain.invoke(user_input)
+        answer = response["result"]
+        st.session_state.messages.append(AIMessage(content=answer))
 
     # チャット履歴の表示
     for message in st.session_state.messages:
