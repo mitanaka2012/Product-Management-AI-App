@@ -46,7 +46,6 @@ def init_messages():     # チャット履歴、コストの初期化
 
                 # 回答の基本ルール
                 - 今回質問しているユーザーは、あなたと同じPdMです。
-                - あなたの経験が含まれるSystemのMessageを踏まえて、最大限正確な回答をしてください。
                 - 口調は丁寧に
             """
         elif role == 'Engineer':
@@ -56,7 +55,6 @@ def init_messages():     # チャット履歴、コストの初期化
 
                 # 回答の基本ルール
                 - 今回質問しているユーザーは、プロダクト開発をPdMと進めるパートナーであるEngineerです。
-                - あなたの経験が含まれるSystemのMessageを踏まえて、最大限正確な回答をしてください。
                 - 口調は丁寧に
             """
         elif role == 'Business':
@@ -66,7 +64,6 @@ def init_messages():     # チャット履歴、コストの初期化
 
                 # 回答の基本ルール
                 - 今回質問しているユーザーは、開発されるプロダクトを売り込んだり評価するBusinessメンバーです。
-                - あなたの経験が含まれるSystemのMessageを踏まえて、最大限正確な回答をしてください。
                 - 口調は丁寧に
             """
         st.session_state.messages = [
@@ -89,6 +86,10 @@ def create_qa_chain():
     qa_chain = RetrievalQA.from_llm(llm=llm, retriever=vectorstore.as_retriever())
     return qa_chain
 
+# session_state.messagesの内容をモデルが理解できる形式のテキストに変換
+def format_messages_for_model(messages):
+    return "\n".join([msg.content for msg in messages])
+
 def main():
     init_page()
 
@@ -110,9 +111,10 @@ def main():
     # ユーザーの入力を監視し、処理
     if submit_button and user_input:
         st.session_state.messages.append(HumanMessage(content=user_input))
-        # with st.spinner("Thinking..."):
+        formatted_messages = format_messages_for_model(st.session_state.messages)
         qa_chain = create_qa_chain()
-        response = qa_chain.invoke(user_input)
+        # formatted_messagesをinvokeメソッドに渡します
+        response = qa_chain.invoke(formatted_messages)
         answer = response["result"]
         st.session_state.messages.append(AIMessage(content=answer))
 
